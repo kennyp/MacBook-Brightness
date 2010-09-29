@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <xosd.h>
 #define CTL_FILE "/sys/devices/platform/applesmc.768/leds/smc::kbd_backlight/brightness"
 #define MAX 255
 #define MIN 0
@@ -32,6 +33,27 @@ void set_current(int val) {
     ctl_file = fopen(CTL_FILE, "w");
     fprintf(ctl_file, "%i", val);
     fclose(ctl_file);
+
+    // Display OSD
+    xosd *osd;
+
+    osd = xosd_create(3);
+
+    if (osd == NULL) return;
+
+    int percentage = (int)(100.0 * val / MAX);
+
+    xosd_set_pos(osd, XOSD_bottom);
+    xosd_set_align(osd, XOSD_center);
+    xosd_set_timeout(osd, 1);
+    xosd_set_shadow_offset(osd, 1);
+
+    xosd_display(osd, 0, XOSD_string, "Brightness");
+    xosd_display(osd, 2, XOSD_percentage, percentage);
+
+    xosd_wait_until_no_display(osd);
+
+    xosd_destroy(osd);
 }
 
 int main(int argc, char *argv[]) {

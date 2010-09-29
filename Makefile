@@ -1,7 +1,8 @@
 PREFIX=/usr/local
+XOSD=/usr/lib64/libxosd.so
 
 all: keyboard_bright.c
-	@gcc keyboard_bright.c -o keyboard_bright
+	@gcc $(XOSD) keyboard_bright.c -o keyboard_bright
 
 install: all
 	@cp keyboard_bright $(PREFIX)/bin
