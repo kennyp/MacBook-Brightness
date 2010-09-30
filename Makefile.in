@@ -8,10 +8,21 @@ else
 		@gcc keyboard_bright.c -o keyboard_bright
 endif
 
-install: all
+static: keyboard_bright.c
+		@gcc -static keyboard_bright.c -o keyboard_bright
+
+doinstall:
 	@cp keyboard_bright $(PREFIX)/bin
 	@chown root:root $(PREFIX)/bin/keyboard_bright
 	@chmod ug+s $(PREFIX)/bin/keyboard_bright
 
+install-static: static doinstall
+
+install: all doinstall
+
 clean:
 	@rm -f keyboard_bright
+
+.PHONY: install
+.PHONY: install-static
+.PHONY: clean
