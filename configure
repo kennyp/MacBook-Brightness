@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PREFIX=/usr/local
-XOSD=$(locate -b libxosd.so | grep libxosd.so$ | head -n 1)
+XOSD=$(locate -b libxosd.so | grep --color=never libxosd.so$ | head -n 1)
 
 for arg in $@ ; do
     case "$arg" in
