@@ -1,10 +1,10 @@
 Description
 ===========
-**keyboard_bright** is a command line program that adjust the keyboard brightness for Apple PowerBooks running GNU/Linux
+**keyboard_bright** is a command line program that adjust the keyboard brightness for Apple MacBooks running GNU/Linux
 
 Compatibility
 =============
-It has been tested on a PowerBook 5,5 under Fedora 13
+It has been tested on a MacBook 5,5 under Fedora 13
 
 License
 =======
