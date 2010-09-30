@@ -2,7 +2,11 @@ PREFIX=@PREFIX@
 XOSD=@XOSD@
 
 all: keyboard_bright.c
-	@gcc $(XOSD) keyboard_bright.c -o keyboard_bright
+ifdef XOSD
+		@gcc -DEXISTS_XOSD $(XOSD) keyboard_bright.c -o keyboard_bright
+else
+		@gcc keyboard_bright.c -o keyboard_bright
+endif
 
 install: all
 	@cp keyboard_bright $(PREFIX)/bin

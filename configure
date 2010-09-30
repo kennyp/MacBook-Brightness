@@ -11,9 +11,6 @@ for arg in $@ ; do
     esac
 done
 
-PREFIX=$(echo $PREFIX | tr / \/)
-XOSD=$(echo $XOSD | tr / \/)
-
 PREFIX=$(echo $PREFIX | sed -e 's/\//\\\//g')
 XOSD=$(echo $XOSD | sed -e 's/\//\\\//g')
 

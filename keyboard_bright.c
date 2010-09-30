@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef EXISTS_XOSD
 #include <xosd.h>
+#endif
 #define CTL_FILE "/sys/devices/platform/applesmc.768/leds/smc::kbd_backlight/brightness"
 #define MAX 255
 #define MIN 0
@@ -35,6 +37,7 @@ void set_current(int val) {
     fclose(ctl_file);
 
     // Display OSD
+#ifdef XOSD_H
     xosd *osd;
 
     osd = xosd_create(3);
@@ -54,6 +57,7 @@ void set_current(int val) {
     xosd_wait_until_no_display(osd);
 
     xosd_destroy(osd);
+#endif
 }
 
 int main(int argc, char *argv[]) {
