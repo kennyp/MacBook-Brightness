@@ -1,5 +1,5 @@
-PREFIX=/usr/local
-XOSD=/usr/lib64/libxosd.so
+PREFIX=@PREFIX@
+XOSD=@XOSD@
 
 all: keyboard_bright.c
 	@gcc $(XOSD) keyboard_bright.c -o keyboard_bright
