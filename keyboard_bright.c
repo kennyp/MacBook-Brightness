@@ -27,7 +27,7 @@
 #define STEP 17
 
 int usage(char *argv[]) {
-    printf("usage: %s up|down\n\n", argv[0]);
+    printf("usage: %s up|down|max|min\n\n", argv[0]);
     return EXIT_FAILURE;
 }
 
@@ -89,6 +89,10 @@ int main(int argc, char *argv[]) {
         val += STEP;
     } else if (strcmp(argv[1], "down") == 0) {
         val -= STEP;
+    } else if (strcmp(argv[1], "min") == 0) {
+        val = MIN;
+    } else if (strcmp(argv[1], "max") == 0) {
+        val = MAX;
     } else {
         return usage(argv);
     }
